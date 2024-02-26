@@ -51,7 +51,9 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        $token = Auth::attempt($credentials);
+        $remember = $request->has('remember');
+
+        $token = Auth::attempt($credentials, $remember);
 
         if(!$token)
         {
@@ -65,6 +67,16 @@ class AuthController extends Controller
             'status' => 'success',
             'message' => 'logged in succesfully!',
             'token' => $token
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'logged out successfully!'
         ]);
     }
 }
