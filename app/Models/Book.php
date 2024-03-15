@@ -9,17 +9,5 @@ class Book extends Model
 {
     use HasFactory;
     
-    protected $guarded = [
-        'title',
-        'cover',
-        'author',
-        'genre',
-        'themes',
-        'series',
-        'description',
-        'isbn',
-        'publisher',
-        'pages',
-        'users_rating',
-    ];
+    protected $guarded = [];
 }
