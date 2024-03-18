@@ -8,7 +8,8 @@ use App\Mail\ContactUsMail;
 
 class EmailController extends Controller
 {
-    public function sendEmail(Request $request) {
+    public function sendEmail(Request $request)
+    {
         $emailAddress = env('MAIL_USERNAME');
 
         $validatedData = $request->validate([
