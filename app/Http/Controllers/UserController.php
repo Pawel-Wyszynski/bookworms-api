@@ -25,9 +25,9 @@ class UserController extends Controller
     }
 
 
-    public function changeEmail(ChangeEmailRequest $request, $id)
+    public function changeEmail(ChangeEmailRequest $request)
 {
-    $user = User::find($id);
+    $user = auth()->user();
 
     if ($user->email !== $request->email) {
         return response()->json(['message' => 'Invalid email address'], 400);
@@ -45,10 +45,9 @@ class UserController extends Controller
     return response()->json($user);
 }
 
-    public function changeName(ChangeNameRequest $request, $id)
+    public function changeName(ChangeNameRequest $request)
 {
-    $user = User::find($id);
-
+    $user = auth()->user();
     if ($user->name !== $request->currentName) {
         return response()->json(['message' => 'Invalid username'], 400);
     }
@@ -60,10 +59,9 @@ class UserController extends Controller
     return response()->json($user);
 }
 
-public function changePassword(ChangePasswordRequest $request, $id)
+public function changePassword(ChangePasswordRequest $request)
 {
-    $user = User::find($id);
-
+    $user = auth()->user();
     if (!Hash::check($request->oldPassword, $user->password)) {
         return response()->json(['message' => 'Invalid password'], 400);
     }

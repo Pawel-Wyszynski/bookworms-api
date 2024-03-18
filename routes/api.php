@@ -23,9 +23,9 @@ Route::post('refresh', [AuthController::class, 'refresh']);
 Route::get('me', [AuthController::class, 'me']);
 Route::post('send-email', [EmailController::class, 'sendEmail']);
 Route::get('user', [UserController::class, 'show']);
-Route::post('change-email/{id}', [UserController::class, 'changeEmail']);
-Route::post('change-name/{id}', [UserController::class, 'changeName']);
-Route::post('change-password/{id}', [UserController::class, 'changePassword']);
+Route::post('change-email', [UserController::class, 'changeEmail']);
+Route::post('change-name', [UserController::class, 'changeName']);
+Route::post('change-password', [UserController::class, 'changePassword']);
 
 
 
