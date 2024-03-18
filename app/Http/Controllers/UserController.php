@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ChangeNameRequest;
+use App\Http\Requests\ChangeEmailRequest;
+use App\Http\Requests\ChangePasswordRequest;
+
 
 
 class UserController extends Controller
@@ -21,7 +25,7 @@ class UserController extends Controller
     }
 
 
-    public function changeEmail(Request $request, $id)
+    public function changeEmail(ChangeEmailRequest $request, $id)
 {
     $user = User::find($id);
 
@@ -41,7 +45,7 @@ class UserController extends Controller
     return response()->json($user);
 }
 
-    public function changeName(Request $request, $id)
+    public function changeName(ChangeNameRequest $request, $id)
 {
     $user = User::find($id);
 
@@ -56,7 +60,7 @@ class UserController extends Controller
     return response()->json($user);
 }
 
-public function changePassword(Request $request, $id)
+public function changePassword(ChangePasswordRequest $request, $id)
 {
     $user = User::find($id);
 
