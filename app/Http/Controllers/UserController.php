@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->email !== $request->email) {
+        if ($user->email != $request->email) {
             return response()->json(['message' => 'Invalid email address'], 400);
         }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->name !== $request->currentName) {
+        if ($user->name != $request->currentName) {
             return response()->json(['message' => 'Invalid username'], 400);
         }
 

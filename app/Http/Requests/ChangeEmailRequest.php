@@ -23,7 +23,7 @@ class ChangeEmailRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'newEmail' => 'required|email|unique:users, email',
+            'newEmail' => 'required|email|confirmed|unique:users, email',
             'confirmEmail' => 'required|email',
         ];
     }
