@@ -22,8 +22,8 @@ class ChangeNameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'currentName' => 'required',
-            'newName' => 'required',
+            'currentName' => 'required|string',
+            'newName' => 'required|string',
         ];
     }
 }
