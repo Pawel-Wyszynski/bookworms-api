@@ -61,7 +61,7 @@ class UserController extends Controller
 
     public function changePassword(ChangePasswordRequest $request)
     {
-        $$user = JWTAuth::user();
+        $user = JWTAuth::user();
 
         if (!Hash::check($request->oldPassword, $user->password)) {
             return response()->json(['message' => 'Invalid password'], 400);
