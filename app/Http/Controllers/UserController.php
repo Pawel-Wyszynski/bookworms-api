@@ -77,7 +77,8 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function changeDescription(ChangeDescriptionRequest $request) {
+    public function changeDescription(ChangeDescriptionRequest $request)
+    {
 
         $user = JWTAuth::user();
 
