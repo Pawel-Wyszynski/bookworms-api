@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangeNameRequest;
 use App\Http\Requests\ChangeEmailRequest;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\ChangeDescriptionRequest;
 
 
 
@@ -77,7 +78,7 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function changeDescription(Request $request) {
+    public function changeDescription(ChangeDescriptionRequest $request) {
         $user = auth()->user();
 
         $user->update([
