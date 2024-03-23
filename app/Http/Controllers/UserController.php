@@ -76,4 +76,14 @@ class UserController extends Controller
 
         return response()->json($user);
     }
+
+    public function changeDescription(Request $request) {
+        $user = auth()->user();
+
+        $user->update([
+            'description' => $request->description,
+        ]);
+
+        return response()->json($user);
+    }
 }

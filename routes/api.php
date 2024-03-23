@@ -26,3 +26,4 @@ Route::get('user', [UserController::class, 'show']);
 Route::post('change-email', [UserController::class, 'changeEmail']);
 Route::post('change-name', [UserController::class, 'changeName']);
 Route::post('change-password', [UserController::class, 'changePassword']);
+Route::post('change-description', [UserController::class, 'changeDescription']);
