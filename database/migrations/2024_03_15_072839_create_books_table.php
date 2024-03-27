@@ -19,12 +19,11 @@ return new class extends Migration
             $table->string('cover')->nullable();
             $table->string('author');
             $table->string('genre');
-            $table->string('themes');
             $table->string('series')->nullable();
             $table->text('description');
-            $table->string('isbn')->unique();;
+            $table->string('isbn')->unique();
             $table->string('publisher');
-            $table->unsignedInteger('pages');
+            $table->bigInteger('pages');
             $table->decimal('users_rating', 3, 2)->nullable();
             $table->timestamps();
         });
