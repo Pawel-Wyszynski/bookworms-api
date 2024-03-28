@@ -9,11 +9,10 @@ use App\Http\Requests\ChangeNameRequest;
 use App\Http\Requests\ChangeEmailRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\ChangeDescriptionRequest;
-use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
-
     public function show()
     {
         $user = JWTAuth::user();
@@ -25,7 +24,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-
     public function changeEmail(ChangeEmailRequest $request)
     {
         $user = JWTAuth::user();
@@ -35,11 +33,11 @@ class UserController extends Controller
         }
 
         if ($request->newEmail == $request->confirmEmail) {
-
             $user->update([
                 'email' => $request->newEmail,
             ]);
-        } else return response()->json(['message' => 'Invalid email confirmation'], 400);
+        } else
+            return response()->json(['message' => 'Invalid email confirmation'], 400);
 
         return response()->json($user);
     }
@@ -68,18 +66,17 @@ class UserController extends Controller
         }
 
         if ($request->newPassword == $request->confirmPassword) {
-
             $user->update([
                 'password' => Hash::make($request->newPassword),
             ]);
-        } else return response()->json(['message' => 'Invalid password confirmation'], 400);
+        } else
+            return response()->json(['message' => 'Invalid password confirmation'], 400);
 
         return response()->json($user);
     }
 
     public function changeDescription(ChangeDescriptionRequest $request)
     {
-
         $user = JWTAuth::user();
 
         $user->update([

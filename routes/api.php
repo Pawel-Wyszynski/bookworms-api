@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +28,8 @@ Route::post('change-email', [UserController::class, 'changeEmail']);
 Route::post('change-name', [UserController::class, 'changeName']);
 Route::post('change-password', [UserController::class, 'changePassword']);
 Route::post('change-description', [UserController::class, 'changeDescription']);
+Route::get('books', [BookController::class, 'index']);
+Route::post('book', [BookController::class, 'store']);
+Route::get('book/{id}', [BookController::class, 'show']);
+Route::put('book/{id}/edit', [BookController::class, 'edit']);
+Route::delete('book/{id}/delete', [BookController::class, 'delete']);
