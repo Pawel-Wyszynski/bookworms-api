@@ -35,6 +35,9 @@ class RatingController extends Controller
 
             $book->ratings()->save($rating);
 
+            $users_rating = $book->ratings()->average('rating');
+            $book->update(['users_rating' => $users_rating]);
+
             return response()->json(['message' => 'Rating and review added successfully'], 201);
         }
     }
