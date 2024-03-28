@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout']);   
+Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('send-email', [EmailController::class, 'sendEmail']);
 Route::get('user', [UserController::class, 'show']);
@@ -31,3 +31,5 @@ Route::post('change-password', [UserController::class, 'changePassword']);
 Route::post('change-description', [UserController::class, 'changeDescription']);
 Route::get('books/{id}', [BooksController::class, 'show']);
 Route::post('books/{bookId}/rate', [RatingController::class, 'addRating']);
+Route::get('books/{bookId}/show', [RatingController::class, 'show']);
+Route::get('books/{bookId}/show-all', [RatingController::class, 'showAll']);
