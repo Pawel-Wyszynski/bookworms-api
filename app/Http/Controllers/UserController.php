@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangeNameRequest;
 use App\Http\Requests\ChangeEmailRequest;
@@ -84,5 +85,42 @@ class UserController extends Controller
         ]);
 
         return response()->json($user);
+    }
+
+    public function index()
+    {
+        if (Gate::allows('viewAny', User::class)) {
+            $users = User::all();
+
+            return response()->json($users);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        if (Gate::allows('update', $user)) {
+            $user->update($request->all());
+
+            return response()->json($user);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if (Gate::allows('delete', $user)) {
+            $user->delete();
+
+            return response()->json(['Message' => 'User deleted successfully']);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
     }
 }
