@@ -91,8 +91,9 @@ class UserController extends Controller
 
     public function index()
     {
-        if(Gate::allows('viewAny', User::class)) {
+        if (Gate::allows('viewAny', User::class)) {
             $users = User::all();
+
             return response()->json($users);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
@@ -105,17 +106,21 @@ class UserController extends Controller
 
         if (Gate::allows('update', $user)) {
             $user->update($request->all());
+
             return response()->json($user);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
+
         if (Gate::allows('delete', $user)) {
             $user->delete();
-            return response()->json(['message' => 'User deleted successfully']);
+
+            return response()->json(['Message' => 'User deleted successfully']);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

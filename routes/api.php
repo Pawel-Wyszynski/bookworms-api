@@ -32,6 +32,6 @@ Route::middleware('auth:api')->group(function () {
     Route::middleware('can:viewAny,App\Models\User')->group(function () {
         Route::get('users', [UserController::class, 'index']);
         Route::put('user/{id}', [UserController::class, 'update']);
-        Route::delete('user/{user}', [UserController::class, 'destroy']);
+        Route::delete('user/{id}', [UserController::class, 'destroy']);
     });
 });
